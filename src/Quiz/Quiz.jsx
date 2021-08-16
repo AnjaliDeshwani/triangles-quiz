@@ -1,161 +1,145 @@
-import React, { useState } from 'react';
-import './Quiz.css';
+import React, { useState } from "react";
+import "./Quiz.css";
 
 var questions = [
   {
-      qid: 1,
-      question: "Which triangle has all three sides equal in length?",
-      options: ['Equilateral', 'Isosceles', 'Scalene'],
-      ans: 'Equilateral'
+    qid: 1,
+    question: "Which triangle has all three sides equal in length?",
+    options: ["Equilateral", "Isosceles", "Scalene"],
+    ans: "Equilateral",
   },
   {
-      qid: 2,
-      question: " A triangle has two sides measuring 14 meters and one side measuring 10 meters. What type of triangle is this?",
-      options: ['Equilateral',
-          'Isosceles',
-          'Scalene'],
-      ans: 'Isosceles'
-  },
-
-  {
-      qid: 3,
-      question: "In triangle ABC if AB = AC = BC = 10 cm, what type of triangle it is?",
-      options: ['Equilateral',
-          'Isosceles',
-          'Scalene'],
-      ans: 'Equilateral'
+    qid: 2,
+    question:
+      " A triangle has two sides measuring 14 meters and one side measuring 10 meters. What type of triangle is this?",
+    options: ["Equilateral", "Isosceles", "Scalene"],
+    ans: "Isosceles",
   },
 
   {
-      qid: 4,
-      question: "Which triangle has all three angles less than 90°?",
-      options: ['Acute',
-          'Right',
-          'Obtuse'],
-      ans: 'Acute'
+    qid: 3,
+    question:
+      "In triangle ABC if AB = AC = BC = 10 cm, what type of triangle it is?",
+    options: ["Equilateral", "Isosceles", "Scalene"],
+    ans: "Equilateral",
   },
 
   {
-      qid: 5,
-      question: " An equilateral triangle is also an actute triangle.",
-      options: ['Yes',
-          'No'],
-      ans: 'Yes'
+    qid: 4,
+    question: "Which triangle has all three angles less than 90°?",
+    options: ["Acute", "Right", "Obtuse"],
+    ans: "Acute",
   },
 
   {
-      qid: 6,
-      question: " A triangle has angle measurements of 90°, 34°, and 56°. What type of triangle is this?",
-      options: ['Acute',
-          'Right',
-          'Obtuse'],
-      ans: 'Right'
+    qid: 5,
+    question: " An equilateral triangle is also an actute triangle.",
+    options: ["Yes", "No"],
+    ans: "Yes",
   },
 
   {
-      qid: 7,
-      question: "In a right triangle, what is the side opposite to the right angle called?",
-      options: ['Altitude',
-          'Leg',
-          'Hypotenuse'],
-      ans: 'Hypotenuse'
+    qid: 6,
+    question:
+      " A triangle has angle measurements of 90°, 34°, and 56°. What type of triangle is this?",
+    options: ["Acute", "Right", "Obtuse"],
+    ans: "Right",
   },
 
   {
-      qid: 8,
-      question: "What type of triangle is ABC, where ∠A = 138°, ∠B = 14° and ∠C = 28°?",
-      options: ['Acute',
-          'Right',
-          'Obtuse'],
-      ans: 'Obtuse'
+    qid: 7,
+    question:
+      "In a right triangle, what is the side opposite to the right angle called?",
+    options: ["Altitude", "Leg", "Hypotenuse"],
+    ans: "Hypotenuse",
   },
 
   {
-      qid: 9,
-      question: " A triangle has angle measurements of 33°, 76°, and 71°. What type of triangle is this?",
-      options: ['Acute',
-          'Right',
-          'Obtuse'],
-      ans: 'Acute'
+    qid: 8,
+    question:
+      "What type of triangle is ABC, where ∠A = 138°, ∠B = 14° and ∠C = 28°?",
+    options: ["Acute", "Right", "Obtuse"],
+    ans: "Obtuse",
   },
 
   {
-      qid: 10,
-      question: "Which triangle has three unequal sides?",
-      options: ['Equilateral',
-          'Isosceles',
-          'Scalene'],
-      ans: 'Scalene'
-  }
+    qid: 9,
+    question:
+      " A triangle has angle measurements of 33°, 76°, and 71°. What type of triangle is this?",
+    options: ["Acute", "Right", "Obtuse"],
+    ans: "Acute",
+  },
 
-]
-
+  {
+    qid: 10,
+    question: "Which triangle has three unequal sides?",
+    options: ["Equilateral", "Isosceles", "Scalene"],
+    ans: "Scalene",
+  },
+];
 
 const Quiz = () => {
-  const [selectedOption, setSelectedOption] = useState({})
-  let [score, setScore] =useState(0)
+  const [selectedOption, setSelectedOption] = useState({});
+  let [score, setScore] = useState(0);
 
-  
-  const updateSelectedOption = qid => (e) => {
-        setSelectedOption(state => ({
-            ...state,
-            [qid]: e.target.value
-        }))
-    }
-const checkScore= () =>{
-  Object.entries(selectedOption).map(([key, val]) =>{
-    
-    if(key==questions[key-1].qid && val==questions[key-1].ans){
-      console.log("key: "+key);
-      console.log("val: "+val);
-      console.log("qid: "+questions[key-1].qid)
-      console.log("ans: "+questions[key-1].ans)
-      setScore(++score)
-      console.log("Score: "+score)
-    }
-  } 
-)
-console.log("Total Score is: "+score)
-let scoreDiv=document.getElementById("score-div");
-scoreDiv.style.display="block"
+  const updateSelectedOption = (qid) => (e) => {
+    setSelectedOption((state) => ({
+      ...state,
+      [qid]: e.target.value,
+    }));
+  };
+  const checkScore = () => {
+    Object.entries(selectedOption).forEach(([key, val]) => {
+      if (key === questions[key - 1].qid && val === questions[key - 1].ans) {
+        console.log("key: " + key);
+        console.log("val: " + val);
+        console.log("qid: " + questions[key - 1].qid);
+        console.log("ans: " + questions[key - 1].ans);
+        setScore(++score);
+        console.log("Score: " + score);
+        return score;
+      }
+    });
+    console.log("Total Score is: " + score);
+    let scoreDiv = document.getElementById("score-div");
+    scoreDiv.style.display = "block";
 
-let scoreBtn=document.getElementById("score-btn");
-scoreBtn.style.display="none"
-}
-    return (
-        <div>
-            {
-                questions.map((q, index) => (
-                    <div key={index}>
-                        <p>{q.question}</p>
-                        {q.options.map((opt, index) => {
-                            return (
-                                <div key={index}>
-
-                                    <input type="radio" name={q.qid} value={opt}
-                                        onChange={updateSelectedOption(q.qid)} />
-                                    <label>{opt}</label>
-
-                                </div>
-                            )
-
-                        },
-
-                        )}
-                     </div>
-                ))
-
-            }  
-            <button id="score-btn" onClick={checkScore}>Check your score</button>
-            {
-                Object.entries(selectedOption).map(([key, val]) =>
-                    <h2 key={key}>{key}: {val}</h2>
-                )
-            }
-            <div id="score-div" style={{display:"none"}}>Your total score is {score}!</div>
+    let scoreBtn = document.getElementById("score-btn");
+    scoreBtn.style.display = "none";
+  };
+  return (
+    <div>
+      {questions.map((q, index) => (
+        <div key={index}>
+          <p>{q.question}</p>
+          {q.options.map((opt, index) => {
+            return (
+              <div key={index}>
+                <input
+                  type="radio"
+                  name={q.qid}
+                  value={opt}
+                  onChange={updateSelectedOption(q.qid)}
+                />
+                <label>{opt}</label>
+              </div>
+            );
+          })}
         </div>
-    )
+      ))}
+      <button id="score-btn" onClick={checkScore}>
+        Check your score
+      </button>
+      {Object.entries(selectedOption).map(([key, val]) => (
+        <h2 key={key}>
+          {key}: {val}
+        </h2>
+      ))}
+      <div id="score-div" style={{ display: "none" }}>
+        Your total score is {score}!
+      </div>
+    </div>
+  );
+};
 
-}
-
-export default Quiz
+export default Quiz;
