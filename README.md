@@ -4,4 +4,4 @@ It will calculate angles, area and hypotenuese of the triangle. And will check u
 
 > To check this click on the link given in About section.
 
-#### This is markFourteen Project of Neog levelzero
+#### This is markTwelve Project of Neog levelzero
