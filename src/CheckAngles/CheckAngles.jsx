@@ -25,32 +25,38 @@ const CheckAngles = () => {
     }
   }
   return (
-    <div>
-      <h2>
+    <div className="angles-section">
+      <h3>
         Triangle has three angles, sum of those three angles in triangle is 180°
-      </h2>
+      </h3>
       <p>
         Enter three angles below and we will let you know if they form triangle
         or not
       </p>
-      <label>Angle1:</label>
-      <input
-        type="number"
-        placeholder="∠"
-        onChange={(e) => setAngleOne(e.target.value)}
-      />
-      <label>Angle2:</label>
-      <input
-        type="number"
-        placeholder="∠"
-        onChange={(e) => setAngleTwo(e.target.value)}
-      />
-      <label>Angle3:</label>
-      <input
-        type="number"
-        placeholder="∠"
-        onChange={(e) => setAngleThree(e.target.value)}
-      />
+      <div className="angles-div">
+        <label>Angle1:</label>
+        <input
+          type="number"
+          placeholder="∠"
+          onChange={(e) => setAngleOne(e.target.value)}
+        />
+      </div>
+      <div className="angles-div">
+        <label>Angle2:</label>
+        <input
+          type="number"
+          placeholder="∠"
+          onChange={(e) => setAngleTwo(e.target.value)}
+        />
+      </div>
+      <div className="angles-div">
+        <label>Angle3:</label>
+        <input
+          type="number"
+          placeholder="∠"
+          onChange={(e) => setAngleThree(e.target.value)}
+        />
+      </div>
       <button onClick={checkHandler}>Check</button>
       <div>{msg}</div>
     </div>

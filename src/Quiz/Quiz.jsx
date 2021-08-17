@@ -83,6 +83,7 @@ const Quiz = () => {
   let [score, setScore] = useState(0);
 
   const updateSelectedOption = (qid) => (e) => {
+    console.log("qid: " + qid);
     setSelectedOption((state) => ({
       ...state,
       [qid]: e.target.value,
@@ -90,11 +91,8 @@ const Quiz = () => {
   };
   const checkScore = () => {
     Object.entries(selectedOption).forEach(([key, val]) => {
+      key = Number(key);
       if (key === questions[key - 1].qid && val === questions[key - 1].ans) {
-        console.log("key: " + key);
-        console.log("val: " + val);
-        console.log("qid: " + questions[key - 1].qid);
-        console.log("ans: " + questions[key - 1].ans);
         setScore(++score);
         console.log("Score: " + score);
         return score;
@@ -108,36 +106,38 @@ const Quiz = () => {
     scoreBtn.style.display = "none";
   };
   return (
-    <div>
-      {questions.map((q, index) => (
-        <div key={index}>
-          <p>{q.question}</p>
-          {q.options.map((opt, index) => {
-            return (
-              <div key={index}>
-                <input
-                  type="radio"
-                  name={q.qid}
-                  value={opt}
-                  onChange={updateSelectedOption(q.qid)}
-                />
-                <label>{opt}</label>
-              </div>
-            );
-          })}
+    <div className="quiz-div">
+      <section className="quiz-section">
+        {questions.map((q, index) => (
+          <div key={index}>
+            <p>{q.question}</p>
+            {q.options.map((opt, index) => {
+              return (
+                <div key={index}>
+                  <input
+                    type="radio"
+                    name={q.qid}
+                    value={opt}
+                    onChange={updateSelectedOption(q.qid)}
+                  />
+                  <label>{opt}</label>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+        <button id="score-btn" onClick={checkScore}>
+          Check your score
+        </button>
+        {/* {Object.entries(selectedOption).map(([key, val]) => (
+          <h2 key={key}>
+            {key}: {val}
+          </h2>
+        ))} */}
+        <div id="score-div" style={{ display: "none" }}>
+          Your total score is {score}!
         </div>
-      ))}
-      <button id="score-btn" onClick={checkScore}>
-        Check your score
-      </button>
-      {Object.entries(selectedOption).map(([key, val]) => (
-        <h2 key={key}>
-          {key}: {val}
-        </h2>
-      ))}
-      <div id="score-div" style={{ display: "none" }}>
-        Your total score is {score}!
-      </div>
+      </section>
     </div>
   );
 };
